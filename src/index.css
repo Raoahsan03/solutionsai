@@ -1,0 +1,307 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DESIGN SYSTEM — ENVAIRE
+   ============================================================ */
+
+:root {
+  --bg-primary: #0B0F19;
+  --bg-secondary: #0F172A;
+  --bg-tertiary: #111827;
+  --accent-blue: #3B82F6;
+  --accent-purple: #8B5CF6;
+  --accent-cyan: #22D3EE;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #475569;
+  --border-subtle: rgba(148, 163, 184, 0.1);
+  --border-medium: rgba(148, 163, 184, 0.15);
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(148, 163, 184, 0.12);
+}
+
+.light {
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #F1F5F9;
+  --bg-tertiary: #E2E8F0;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-medium: rgba(15, 23, 42, 0.12);
+  --glass-bg: rgba(248, 250, 252, 0.7);
+  --glass-border: rgba(15, 23, 42, 0.1);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Manrope', system-ui, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   GRADIENTS
+   ============================================================ */
+
+.gradient-text {
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6, #22D3EE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-reverse {
+  background: linear-gradient(135deg, #22D3EE, #8B5CF6, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 16px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.5), rgba(139,92,246,0.5), rgba(34,211,238,0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ============================================================
+   GLASS MORPHISM
+   ============================================================ */
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.12);
+}
+
+/* ============================================================
+   GLOW EFFECTS
+   ============================================================ */
+
+.glow-blue {
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+}
+
+.glow-purple {
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.3);
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.7);
+}
+
+/* ============================================================
+   ORBIT ANIMATION
+   ============================================================ */
+
+@keyframes orbit-1 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbit-2 {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes orbit-3 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float-card {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.orbit-ring-1 {
+  animation: orbit-1 12s linear infinite;
+}
+
+.orbit-ring-2 {
+  animation: orbit-2 18s linear infinite;
+}
+
+.orbit-ring-3 {
+  animation: orbit-3 25s linear infinite;
+}
+
+/* ============================================================
+   TYPING CURSOR
+   ============================================================ */
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ============================================================
+   WAVE ANIMATION (HERO)
+   ============================================================ */
+
+@keyframes wave-move {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-30px) translateY(-20px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+@keyframes blob-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.97); }
+}
+
+.blob-drift {
+  animation: blob-drift 12s ease-in-out infinite;
+}
+
+.blob-drift-slow {
+  animation: blob-drift 18s ease-in-out infinite reverse;
+}
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+
+.timeline-node {
+  transition: box-shadow 0.4s ease, background-color 0.4s ease;
+}
+
+.timeline-node.active {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
+}
+
+/* ============================================================
+   SECTION SPACING
+   ============================================================ */
+
+section {
+  scroll-margin-top: 80px;
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: #F8FAFC;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   LIGHT MODE OVERRIDES
+   ============================================================ */
+
+html.light body {
+  background-color: #F8FAFC;
+  color: #0F172A;
+}
+
+html.light .glass {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+}
+
+html.light .glass-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.1);
+}
+
+html:not(.dark) body {
+  background-color: #F1F5F9;
+}
+
+/* Light mode text overrides */
+html.light {
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(15, 23, 42, 0.1);
+}
