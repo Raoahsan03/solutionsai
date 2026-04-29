@@ -5,7 +5,8 @@ const About = lazy(() => import('../components/About'))
 const WhyUs = lazy(() => import('../components/WhyUs'))
 const ProcessTimeline = lazy(() => import('../components/ProcessTimeline'))
 const Services = lazy(() => import('../components/Services'))
-const Schedule = lazy(() => import('../components/Schedule'))
+const Portfolio = lazy(() => import('../components/Portfolio'))
+const FAQ = lazy(() => import('../components/FAQ'))
 
 function SectionLoader() {
   return (
@@ -32,7 +33,10 @@ export default function Home() {
         <Services />
       </Suspense>
       <Suspense fallback={<SectionLoader />}>
-        <Schedule />
+        <Portfolio />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <FAQ />
       </Suspense>
     </main>
   )

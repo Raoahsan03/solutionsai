@@ -39,8 +39,8 @@ function OrbitSystem() {
         const t2 = AI_TERMS[(termIdxRef.current + 1) % AI_TERMS.length]
         termIdxRef.current += 2
         setCardData({ terms: [t1, t2], positions: getCardPositions(), visible: true })
-      }, 400)
-    }, 2200)
+      }, 220)
+    }, 1000)
     return () => clearInterval(interval)
   }, [])
 
@@ -119,7 +119,7 @@ function OrbitSystem() {
           boxShadow: '0 0 40px rgba(139,92,246,0.3)',
         }}
       >
-        <span className="font-display font-bold text-sm gradient-text">Envaire</span>
+        <span className="font-display font-bold text-sm gradient-text">Avaira</span>
       </div>
 
       {/* Floating AI term cards */}
@@ -173,7 +173,7 @@ export default function About() {
             <motion.div variants={fadeUp}
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
               style={{ background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.2)', color: '#22D3EE' }}>
-              About Envaire
+              About Avaira
             </motion.div>
 
             <motion.h2 variants={fadeUp}
@@ -184,7 +184,7 @@ export default function About() {
             </motion.h2>
 
             <motion.p variants={fadeUp} className="text-lg leading-relaxed mb-5" style={{ color: 'var(--text-secondary)' }}>
-              We don't chase hype. At Envaire, every solution starts with a real problem. We ask the right questions, design with intent, and deploy AI systems that deliver measurable outcomes — not demos.
+              We do not chase hype. At Avaira, every solution starts with a real problem. We ask the right questions, design with intent, and deploy AI systems that deliver measurable outcomes.
             </motion.p>
 
             <motion.p variants={fadeUp} className="text-lg leading-relaxed mb-5" style={{ color: 'var(--text-secondary)' }}>
@@ -192,7 +192,7 @@ export default function About() {
             </motion.p>
 
             <motion.p variants={fadeUp} className="text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              Whether you're automating workflows, building AI agents, or transforming your software stack — we build it right, from day one.
+              Whether you are automating workflows, building AI agents, or transforming your software stack, we build it right from day one.
             </motion.p>
 
             <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-6">

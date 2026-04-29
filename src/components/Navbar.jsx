@@ -1,17 +1,54 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Sun, Moon, Menu, X } from 'lucide-react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useScrolled } from '../hooks/useScrolled'
 
 function scrollTo(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
-export default function Navbar({ theme, toggleTheme }) {
-  const scrolled = useScrolled(20)
-  const [mobileOpen, setMobileOpen] = useState(false)
+function LogoMark({ compact }) {
+  return (
+    <div
+      className="rounded-xl flex items-center justify-center"
+      style={{
+        width: compact ? 30 : 34,
+        height: compact ? 30 : 34,
+        background: 'rgba(15,23,42,0.7)',
+        border: '1px solid rgba(59,130,246,0.4)',
+      }}
+    >
+      <svg width={compact ? 18 : 20} height={compact ? 18 : 20} viewBox="0 0 32 32" aria-hidden="true">
+        <defs>
+          <linearGradient id="logo-g" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#3B82F6" />
+            <stop offset="50%" stopColor="#8B5CF6" />
+            <stop offset="100%" stopColor="#22D3EE" />
+          </linearGradient>
+        </defs>
+        <path d="M6 18c2.2-5 6.1-7.5 10-7.5S23.8 13 26 18" fill="none" stroke="url(#logo-g)" strokeWidth="3" strokeLinecap="round" />
+        <path d="M6 14c2.2 5 6.1 7.5 10 7.5S23.8 19 26 14" fill="none" stroke="url(#logo-g)" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="16" cy="16" r="2.6" fill="url(#logo-g)" />
+      </svg>
+    </div>
+  )
+}
 
-  // Close mobile menu on resize
+export default function Navbar({ theme, toggleTheme, onOpenQuote }) {
+  const scrolled = useScrolled(50)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const handleNav = (id) => {
+    if (location.pathname !== '/') {
+      navigate('/')
+      setTimeout(() => scrollTo(id), 120)
+      return
+    }
+    scrollTo(id)
+  }
+
   useEffect(() => {
     const handler = () => { if (window.innerWidth >= 768) setMobileOpen(false) }
     window.addEventListener('resize', handler)
@@ -19,9 +56,11 @@ export default function Navbar({ theme, toggleTheme }) {
   }, [])
 
   const navLinks = [
-    { label: 'About', id: 'about' },
+    { label: 'Home', id: 'home' },
+    { label: 'About Us', id: 'about' },
     { label: 'Services', id: 'services' },
-    { label: 'Why Us', id: 'why-us' },
+    { label: 'FAQ', id: 'faq' },
+    { label: 'Portfolio', id: 'portfolio' },
   ]
 
   return (
@@ -32,52 +71,48 @@ export default function Navbar({ theme, toggleTheme }) {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          background: scrolled
-            ? theme === 'dark'
-              ? 'rgba(11,15,25,0.85)'
-              : 'rgba(248,250,252,0.85)'
-            : 'transparent',
+          background: scrolled ? 'rgba(10,15,25,0.6)' : 'transparent',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
           borderBottom: scrolled ? '1px solid var(--border-subtle)' : '1px solid transparent',
+          boxShadow: scrolled ? '0 12px 40px rgba(2,6,23,0.45)' : 'none',
         }}
       >
         <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
-          {/* Logo */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => {
+              if (location.pathname !== '/') {
+                navigate('/')
+                return
+              }
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
             className="flex items-center gap-2.5 group"
-            aria-label="Envaire home"
+            aria-label="Avaira home"
+            style={{ transform: scrolled ? 'scale(0.96)' : 'scale(1)', transition: 'transform 0.3s ease' }}
           >
-            <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-black text-sm"
-              style={{ background: 'linear-gradient(135deg,#3B82F6,#8B5CF6,#22D3EE)' }}>
-              E
-            </span>
-            <span className="font-display font-bold text-xl tracking-tight"
-              style={{ color: 'var(--text-primary)' }}>
-              Envaire
+            <LogoMark compact={scrolled} />
+            <span className="font-display font-bold text-xl tracking-tight" style={{ color: 'var(--text-primary)' }}>
+              Avaira
             </span>
           </button>
 
-          {/* Center Nav */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map(link => (
               <button
                 key={link.id}
-                onClick={() => scrollTo(link.id)}
+                onClick={() => handleNav(link.id)}
                 className="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-white/5"
                 style={{ color: 'var(--text-secondary)' }}
-                onMouseEnter={e => e.target.style.color = 'var(--text-primary)'}
-                onMouseLeave={e => e.target.style.color = 'var(--text-secondary)'}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--text-primary)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
               >
                 {link.label}
               </button>
             ))}
           </nav>
 
-          {/* Right actions */}
           <div className="hidden md:flex items-center gap-3">
-            {/* Theme toggle */}
             <button
               onClick={toggleTheme}
               className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200"
@@ -101,20 +136,18 @@ export default function Navbar({ theme, toggleTheme }) {
               </AnimatePresence>
             </button>
 
-            {/* CTA */}
             <button
-              onClick={() => scrollTo('schedule')}
+              onClick={onOpenQuote}
               className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
               style={{
                 background: 'linear-gradient(135deg,#3B82F6,#8B5CF6)',
-                boxShadow: '0 0 20px rgba(59,130,246,0.3)',
+                boxShadow: '0 0 24px rgba(59,130,246,0.35)',
               }}
             >
-              Get in Touch
+              Get a Quote
             </button>
           </div>
 
-          {/* Mobile hamburger */}
           <button
             className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg"
             style={{ color: 'var(--text-primary)', background: 'var(--glass-bg)', border: '1px solid var(--border-subtle)' }}
@@ -126,7 +159,6 @@ export default function Navbar({ theme, toggleTheme }) {
         </div>
       </motion.header>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -145,7 +177,7 @@ export default function Navbar({ theme, toggleTheme }) {
               {navLinks.map(link => (
                 <button
                   key={link.id}
-                  onClick={() => { scrollTo(link.id); setMobileOpen(false) }}
+                  onClick={() => { handleNav(link.id); setMobileOpen(false) }}
                   className="w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors hover:bg-white/5"
                   style={{ color: 'var(--text-secondary)' }}
                 >
@@ -161,11 +193,11 @@ export default function Navbar({ theme, toggleTheme }) {
                   {theme === 'dark' ? <><Sun size={16} /> Light Mode</> : <><Moon size={16} /> Dark Mode</>}
                 </button>
                 <button
-                  onClick={() => { scrollTo('schedule'); setMobileOpen(false) }}
+                  onClick={() => { onOpenQuote(); setMobileOpen(false) }}
                   className="flex-1 px-4 py-3 rounded-xl text-sm font-semibold text-white"
                   style={{ background: 'linear-gradient(135deg,#3B82F6,#8B5CF6)' }}
                 >
-                  Get in Touch
+                  Get a Quote
                 </button>
               </div>
             </div>

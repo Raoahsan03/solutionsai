@@ -1,8 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
 
-const WORDS = ['the future', 'your business', 'real problems', 'growth', 'efficiency']
+const WORDS = [
+  'websites',
+  'mobile apps',
+  'AI automations',
+  'Shopify stores',
+  'plugins',
+  'ERP systems',
+  'AI agents',
+  'business growth',
+]
 
 function AnimatedWaves() {
   return (
@@ -105,15 +113,15 @@ export default function Hero() {
       setTimeout(() => {
         setWordIndex(i => (i + 1) % WORDS.length)
         setVisible(true)
-      }, 300)
-    }, 2200)
+      }, 220)
+    }, 1000)
     return () => clearInterval(intervalRef.current)
   }, [])
 
   return (
     <section
-      id="hero"
-      className="relative min-h-screen flex items-center justify-center pt-[72px]"
+      id="home"
+      className="relative min-h-[70vh] flex items-center justify-center pt-[72px]"
       style={{ background: 'var(--bg-primary)' }}
     >
       <AnimatedWaves />
@@ -132,7 +140,7 @@ export default function Hero() {
           }}
         >
           <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-          Now building the next generation of AI solutions
+          AI, Web, Apps & Automation Solutions
         </motion.div>
 
         {/* Heading */}
@@ -146,7 +154,7 @@ export default function Hero() {
               fontSize: 'clamp(3rem, 7vw, 6rem)',
               color: 'var(--text-primary)',
             }}>
-            AI solutions for
+            Digital solutions for
           </h1>
 
           {/* Animated word */}
@@ -177,59 +185,9 @@ export default function Hero() {
           className="text-xl md:text-2xl max-w-2xl mx-auto mt-8 mb-12 leading-relaxed"
           style={{ color: 'var(--text-secondary)' }}
         >
-          We build AI-powered systems, automations, and software
-          that solve <em className="not-italic font-semibold" style={{ color: 'var(--text-primary)' }}>real business problems</em>.
+          Avaira builds websites, apps, AI automations, plugins, Shopify stores, PRDs, agents, and ERP systems that help
+          businesses launch, scale, and work smarter.
         </motion.p>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.55 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <button
-            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group flex items-center gap-2 px-8 py-4 rounded-2xl text-base font-semibold text-white transition-all duration-300 hover:scale-105"
-            style={{
-              background: 'linear-gradient(135deg,#3B82F6,#8B5CF6)',
-              boxShadow: '0 0 30px rgba(59,130,246,0.4), 0 8px 32px rgba(0,0,0,0.3)',
-            }}
-          >
-            Explore Envaire
-            <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" />
-          </button>
-
-          <button
-            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 rounded-2xl text-base font-semibold transition-all duration-300 hover:scale-105"
-            style={{
-              background: 'var(--glass-bg)',
-              border: '1px solid var(--border-medium)',
-              color: 'var(--text-primary)',
-              backdropFilter: 'blur(12px)',
-            }}
-          >
-            View Services
-          </button>
-        </motion.div>
-
-        {/* Scroll hint */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="mt-24 flex flex-col items-center gap-2"
-          style={{ color: 'var(--text-muted)' }}
-        >
-          <span className="text-xs font-medium tracking-widest uppercase">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-px h-8 rounded"
-            style={{ background: 'linear-gradient(to bottom, rgba(59,130,246,0.6), transparent)' }}
-          />
-        </motion.div>
       </div>
     </section>
   )

@@ -1,20 +1,21 @@
-import { motion } from 'framer-motion'
 import { Github, Twitter, Linkedin, Mail, ArrowUpRight } from 'lucide-react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const links = {
   company: [
+    { label: 'Home', id: 'home' },
     { label: 'About', id: 'about' },
     { label: 'Services', id: 'services' },
-    { label: 'Why Us', id: 'why-us' },
-    { label: 'Process', id: 'process' },
-    { label: 'Schedule', id: 'schedule' },
+    { label: 'Portfolio', id: 'portfolio' },
+    { label: 'FAQ', id: 'faq' },
+    { label: 'Schedule', href: '/schedule' },
   ],
   services: [
-    { label: 'Website Development', id: 'service-web-dev' },
-    { label: 'AI Automations', id: 'service-ai-automations' },
-    { label: 'AI Agents', id: 'service-agents' },
-    { label: 'App Development', id: 'service-app-dev' },
-    { label: 'Shopify', id: 'service-shopify' },
+    { label: 'Website Development', id: 'services' },
+    { label: 'AI Automations', id: 'services' },
+    { label: 'AI Agents', id: 'services' },
+    { label: 'App Development', id: 'services' },
+    { label: 'Shopify', id: 'services' },
   ],
 }
 
@@ -22,15 +23,53 @@ const socials = [
   { icon: Twitter, label: 'Twitter', href: '#' },
   { icon: Linkedin, label: 'LinkedIn', href: '#' },
   { icon: Github, label: 'GitHub', href: '#' },
-  { icon: Mail, label: 'Email', href: 'mailto:hello@envaire.com' },
+  { icon: Mail, label: 'Email', href: 'mailto:hello@avaira.com' },
 ]
 
 function scrollTo(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
+function LogoMark() {
+  return (
+    <div
+      className="rounded-xl flex items-center justify-center"
+      style={{
+        width: 36,
+        height: 36,
+        background: 'rgba(15,23,42,0.7)',
+        border: '1px solid rgba(59,130,246,0.4)',
+      }}
+    >
+      <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true">
+        <defs>
+          <linearGradient id="footer-g" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#3B82F6" />
+            <stop offset="50%" stopColor="#8B5CF6" />
+            <stop offset="100%" stopColor="#22D3EE" />
+          </linearGradient>
+        </defs>
+        <path d="M6 18c2.2-5 6.1-7.5 10-7.5S23.8 13 26 18" fill="none" stroke="url(#footer-g)" strokeWidth="3" strokeLinecap="round" />
+        <path d="M6 14c2.2 5 6.1 7.5 10 7.5S23.8 19 26 14" fill="none" stroke="url(#footer-g)" strokeWidth="3" strokeLinecap="round" />
+        <circle cx="16" cy="16" r="2.6" fill="url(#footer-g)" />
+      </svg>
+    </div>
+  )
+}
+
 export default function Footer() {
+  const navigate = useNavigate()
+  const location = useLocation()
   const year = new Date().getFullYear()
+
+  const handleNav = (id) => {
+    if (location.pathname !== '/') {
+      navigate('/')
+      setTimeout(() => scrollTo(id), 120)
+      return
+    }
+    scrollTo(id)
+  }
 
   return (
     <footer
@@ -49,14 +88,11 @@ export default function Footer() {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center gap-2.5 mb-5"
             >
-              <span className="w-9 h-9 rounded-xl flex items-center justify-center text-white font-black text-sm"
-                style={{ background: 'linear-gradient(135deg,#3B82F6,#8B5CF6,#22D3EE)' }}>
-                E
-              </span>
-              <span className="font-display font-bold text-2xl" style={{ color: 'var(--text-primary)' }}>Envaire</span>
+              <LogoMark />
+              <span className="font-display font-bold text-2xl" style={{ color: 'var(--text-primary)' }}>Avaira</span>
             </button>
             <p className="text-sm leading-relaxed max-w-xs mb-6" style={{ color: 'var(--text-secondary)' }}>
-              Building AI-powered systems, automations, and software that solve real business problems.
+              Building AI and software systems that help teams launch, scale, and automate.
             </p>
             <div className="flex items-center gap-3">
               {socials.map(s => {
@@ -87,9 +123,9 @@ export default function Footer() {
             <p className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: 'var(--text-muted)' }}>Company</p>
             <ul className="space-y-3">
               {links.company.map(l => (
-                <li key={l.id}>
+                <li key={l.id || l.label}>
                   <button
-                    onClick={() => scrollTo(l.id)}
+                    onClick={() => (l.href ? navigate(l.href) : handleNav(l.id))}
                     className="text-sm transition-colors duration-200 hover:text-blue-400"
                     style={{ color: 'var(--text-secondary)' }}
                   >
@@ -105,9 +141,9 @@ export default function Footer() {
             <p className="text-xs font-bold tracking-widest uppercase mb-5" style={{ color: 'var(--text-muted)' }}>Services</p>
             <ul className="space-y-3">
               {links.services.map(l => (
-                <li key={l.id}>
+                <li key={l.label}>
                   <button
-                    onClick={() => scrollTo(l.id)}
+                    onClick={() => handleNav(l.id)}
                     className="text-sm transition-colors duration-200 hover:text-blue-400 flex items-center gap-1 group"
                     style={{ color: 'var(--text-secondary)' }}
                   >
@@ -124,7 +160,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t"
           style={{ borderColor: 'var(--border-subtle)' }}>
           <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
-            © {year} Envaire. All rights reserved.
+            © {year} Avaira. All rights reserved.
           </p>
           <div className="flex items-center gap-5">
             {['Privacy Policy', 'Terms of Service'].map(item => (

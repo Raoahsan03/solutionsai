@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 
 export function useTheme() {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('envaire-theme') || 'dark'
+    return localStorage.getItem('avaira-theme') || 'dark'
   })
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export function useTheme() {
       root.classList.remove('light')
       root.classList.add('dark')
     }
-    localStorage.setItem('envaire-theme', theme)
+    localStorage.setItem('avaira-theme', theme)
   }, [theme])
 
   const toggleTheme = useCallback(() => {

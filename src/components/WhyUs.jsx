@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 
 const CODE_SNIPPETS = [
-  `# Envaire AI Core
-from envaire import Pipeline, LLMChain
+  `# Avaira AI Core
+from avaira import Pipeline, LLMChain
 
 pipeline = Pipeline(
   model="gpt-4o",
@@ -18,7 +18,7 @@ response = pipeline.run(
 return response.output`,
 
   `# RAG Engine
-from envaire.rag import Retriever
+from avaira.rag import Retriever
 
 retriever = Retriever(
   index="pinecone-prod",
@@ -109,7 +109,7 @@ function CodeBox() {
         <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-80" />
         <div className="w-3 h-3 rounded-full bg-green-500 opacity-80" />
         <span className="ml-3 text-xs font-medium" style={{ color: 'var(--text-muted)' }}>
-          envaire_logic.py
+          avaira_logic.py
         </span>
         <div className="ml-auto flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -156,7 +156,7 @@ function CodeBox() {
         <span>Python 3.11</span>
         <span>UTF-8</span>
         <span>LF</span>
-        <span className="gradient-text font-semibold">Envaire SDK</span>
+        <span className="gradient-text font-semibold">Avaira SDK</span>
       </div>
     </div>
   )
@@ -205,7 +205,7 @@ export default function WhyUs() {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
               style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', color: '#60A5FA' }}
             >
-              Why Envaire
+              Why Avaira
             </motion.div>
 
             <motion.h2
