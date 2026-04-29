@@ -43,7 +43,7 @@ function StepIndicator({ steps, current }) {
           <div
             className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
             style={{
-              background: i < current ? 'linear-gradient(135deg,#3B82F6,#8B5CF6)' : i === current ? 'rgba(59,130,246,0.2)' : 'var(--glass-bg)',
+              background: i < current ? 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))' : i === current ? 'rgba(15, 76, 129, 0.16)' : 'var(--glass-bg)',
               border: i <= current ? 'none' : '1px solid var(--border-subtle)',
               color: i <= current ? '#fff' : 'var(--text-muted)',
             }}
@@ -51,7 +51,7 @@ function StepIndicator({ steps, current }) {
             {i < current ? <Check size={12} strokeWidth={3} /> : i + 1}
           </div>
           {i < steps.length - 1 && (
-            <div className="h-px flex-1" style={{ background: i < current ? 'rgba(59,130,246,0.5)' : 'var(--border-subtle)' }} />
+            <div className="h-px flex-1" style={{ background: i < current ? 'rgba(15, 76, 129, 0.4)' : 'var(--border-subtle)' }} />
           )}
         </div>
       ))}
@@ -171,7 +171,7 @@ export default function GetQuoteModal({ open, onClose }) {
                     className="text-center py-10"
                   >
                     <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
-                      style={{ background: 'linear-gradient(135deg,#3B82F6,#8B5CF6)', boxShadow: '0 0 28px rgba(59,130,246,0.4)' }}>
+                      style={{ background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))', boxShadow: '0 0 24px rgba(15, 76, 129, 0.35)' }}>
                       <Check size={28} color="white" strokeWidth={3} />
                     </div>
                     <h4 className="font-display font-bold text-2xl mb-2" style={{ color: 'var(--text-primary)' }}>Request received</h4>
@@ -231,10 +231,10 @@ export default function GetQuoteModal({ open, onClose }) {
                             onClick={() => setForm(prev => ({ ...prev, service }))}
                             className="px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 text-left"
                             style={{
-                              background: form.service === service ? 'linear-gradient(135deg,#3B82F6,#8B5CF6)' : 'var(--glass-bg)',
-                              border: form.service === service ? '1px solid rgba(59,130,246,0.6)' : '1px solid var(--border-subtle)',
+                              background: form.service === service ? 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))' : 'var(--glass-bg)',
+                              border: form.service === service ? '1px solid rgba(15, 76, 129, 0.5)' : '1px solid var(--border-subtle)',
                               color: form.service === service ? '#fff' : 'var(--text-secondary)',
-                              boxShadow: form.service === service ? '0 0 18px rgba(59,130,246,0.35)' : 'none',
+                              boxShadow: form.service === service ? '0 0 18px rgba(15, 76, 129, 0.25)' : 'none',
                             }}
                           >
                             {service}
@@ -251,9 +251,9 @@ export default function GetQuoteModal({ open, onClose }) {
                             onClick={() => toggleNeed(need)}
                             className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200"
                             style={{
-                              background: form.needs.includes(need) ? 'rgba(59,130,246,0.2)' : 'var(--glass-bg)',
-                              border: form.needs.includes(need) ? '1px solid rgba(59,130,246,0.6)' : '1px solid var(--border-subtle)',
-                              color: form.needs.includes(need) ? '#BFDBFE' : 'var(--text-secondary)',
+                              background: form.needs.includes(need) ? 'rgba(15, 76, 129, 0.16)' : 'var(--glass-bg)',
+                              border: form.needs.includes(need) ? '1px solid rgba(15, 76, 129, 0.45)' : '1px solid var(--border-subtle)',
+                              color: form.needs.includes(need) ? 'var(--accent-primary)' : 'var(--text-secondary)',
                             }}
                           >
                             {need}
@@ -284,9 +284,9 @@ export default function GetQuoteModal({ open, onClose }) {
                                 onClick={() => setForm(prev => ({ ...prev, platform }))}
                                 className="px-4 py-2 rounded-full text-sm"
                                 style={{
-                                  background: form.platform === platform ? 'rgba(139,92,246,0.2)' : 'var(--glass-bg)',
-                                  border: form.platform === platform ? '1px solid rgba(139,92,246,0.6)' : '1px solid var(--border-subtle)',
-                                  color: form.platform === platform ? '#DDD6FE' : 'var(--text-secondary)',
+                                  background: form.platform === platform ? 'rgba(19, 134, 166, 0.16)' : 'var(--glass-bg)',
+                                  border: form.platform === platform ? '1px solid rgba(19, 134, 166, 0.45)' : '1px solid var(--border-subtle)',
+                                  color: form.platform === platform ? 'var(--accent-secondary)' : 'var(--text-secondary)',
                                 }}
                               >
                                 {platform}
@@ -334,9 +334,9 @@ export default function GetQuoteModal({ open, onClose }) {
                                 onClick={() => setForm(prev => ({ ...prev, budget }))}
                                 className="px-4 py-2 rounded-xl text-sm text-left"
                                 style={{
-                                  background: form.budget === budget ? 'rgba(34,211,238,0.2)' : 'var(--glass-bg)',
-                                  border: form.budget === budget ? '1px solid rgba(34,211,238,0.6)' : '1px solid var(--border-subtle)',
-                                  color: form.budget === budget ? '#A5F3FC' : 'var(--text-secondary)',
+                                  background: form.budget === budget ? 'rgba(19, 134, 166, 0.16)' : 'var(--glass-bg)',
+                                  border: form.budget === budget ? '1px solid rgba(19, 134, 166, 0.45)' : '1px solid var(--border-subtle)',
+                                  color: form.budget === budget ? 'var(--accent-secondary)' : 'var(--text-secondary)',
                                 }}
                               >
                                 {budget}
@@ -353,9 +353,9 @@ export default function GetQuoteModal({ open, onClose }) {
                                 onClick={() => setForm(prev => ({ ...prev, timeline }))}
                                 className="px-4 py-2 rounded-xl text-sm text-left"
                                 style={{
-                                  background: form.timeline === timeline ? 'rgba(59,130,246,0.2)' : 'var(--glass-bg)',
-                                  border: form.timeline === timeline ? '1px solid rgba(59,130,246,0.6)' : '1px solid var(--border-subtle)',
-                                  color: form.timeline === timeline ? '#BFDBFE' : 'var(--text-secondary)',
+                                  background: form.timeline === timeline ? 'rgba(15, 76, 129, 0.16)' : 'var(--glass-bg)',
+                                  border: form.timeline === timeline ? '1px solid rgba(15, 76, 129, 0.45)' : '1px solid var(--border-subtle)',
+                                  color: form.timeline === timeline ? 'var(--accent-primary)' : 'var(--text-secondary)',
                                 }}
                               >
                                 {timeline}
@@ -391,10 +391,10 @@ export default function GetQuoteModal({ open, onClose }) {
                     disabled={!canContinue}
                     className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white"
                     style={{
-                      background: canContinue ? 'linear-gradient(135deg,#3B82F6,#8B5CF6)' : 'var(--glass-bg)',
+                      background: canContinue ? 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))' : 'var(--glass-bg)',
                       border: canContinue ? 'none' : '1px solid var(--border-subtle)',
                       color: canContinue ? '#fff' : 'var(--text-muted)',
-                      boxShadow: canContinue ? '0 0 18px rgba(59,130,246,0.35)' : 'none',
+                      boxShadow: canContinue ? '0 0 18px rgba(15, 76, 129, 0.25)' : 'none',
                     }}
                   >
                     Continue
@@ -405,10 +405,10 @@ export default function GetQuoteModal({ open, onClose }) {
                     disabled={!canContinue}
                     className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white"
                     style={{
-                      background: canContinue ? 'linear-gradient(135deg,#3B82F6,#8B5CF6)' : 'var(--glass-bg)',
+                      background: canContinue ? 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))' : 'var(--glass-bg)',
                       border: canContinue ? 'none' : '1px solid var(--border-subtle)',
                       color: canContinue ? '#fff' : 'var(--text-muted)',
-                      boxShadow: canContinue ? '0 0 18px rgba(59,130,246,0.35)' : 'none',
+                      boxShadow: canContinue ? '0 0 18px rgba(15, 76, 129, 0.25)' : 'none',
                     }}
                   >
                     Submit request

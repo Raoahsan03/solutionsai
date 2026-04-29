@@ -5,17 +5,17 @@ const links = {
   company: [
     { label: 'Home', id: 'home' },
     { label: 'About', id: 'about' },
-    { label: 'Services', id: 'services' },
+    { label: 'Solutions', id: 'solutions' },
     { label: 'Portfolio', id: 'portfolio' },
     { label: 'FAQ', id: 'faq' },
     { label: 'Schedule', href: '/schedule' },
   ],
   services: [
-    { label: 'Website Development', id: 'services' },
-    { label: 'AI Automations', id: 'services' },
-    { label: 'AI Agents', id: 'services' },
-    { label: 'App Development', id: 'services' },
-    { label: 'Shopify', id: 'services' },
+    { label: 'Web Platforms', id: 'solutions' },
+    { label: 'AI Automations', id: 'solutions' },
+    { label: 'RAG Systems', id: 'solutions' },
+    { label: 'Mobile Apps', id: 'solutions' },
+    { label: 'Commerce Ops', id: 'solutions' },
   ],
 }
 
@@ -37,16 +37,17 @@ function LogoMark() {
       style={{
         width: 36,
         height: 36,
-        background: 'rgba(15,23,42,0.7)',
-        border: '1px solid rgba(59,130,246,0.4)',
+        background: 'var(--bg-primary)',
+        border: '1px solid var(--border-subtle)',
+        boxShadow: 'var(--shadow-soft)',
       }}
     >
       <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true">
         <defs>
           <linearGradient id="footer-g" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#3B82F6" />
-            <stop offset="50%" stopColor="#8B5CF6" />
-            <stop offset="100%" stopColor="#22D3EE" />
+            <stop offset="0%" stopColor="#0f4c81" />
+            <stop offset="60%" stopColor="#1386a6" />
+            <stop offset="100%" stopColor="#1aa3b5" />
           </linearGradient>
         </defs>
         <path d="M6 18c2.2-5 6.1-7.5 10-7.5S23.8 13 26 18" fill="none" stroke="url(#footer-g)" strokeWidth="3" strokeLinecap="round" />
@@ -78,7 +79,7 @@ export default function Footer() {
     >
       {/* Glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] rounded-full opacity-10 blur-[100px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, #3B82F6, #8B5CF6, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse, rgba(15, 76, 129, 0.22), rgba(19, 134, 166, 0.18), transparent 70%)' }} />
 
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="grid md:grid-cols-[2fr_1fr_1fr] gap-12 mb-16">
@@ -108,7 +109,7 @@ export default function Footer() {
                       border: '1px solid var(--border-subtle)',
                       color: 'var(--text-muted)',
                     }}
-                    onMouseEnter={e => e.currentTarget.style.color = '#3B82F6'}
+                    onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-primary)'}
                     onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
                   >
                     <SocialIcon size={15} />
@@ -126,8 +127,7 @@ export default function Footer() {
                 <li key={l.id || l.label}>
                   <button
                     onClick={() => (l.href ? navigate(l.href) : handleNav(l.id))}
-                    className="text-sm transition-colors duration-200 hover:text-blue-400"
-                    style={{ color: 'var(--text-secondary)' }}
+                    className="text-sm link-accent"
                   >
                     {l.label}
                   </button>
@@ -144,8 +144,7 @@ export default function Footer() {
                 <li key={l.label}>
                   <button
                     onClick={() => handleNav(l.id)}
-                    className="text-sm transition-colors duration-200 hover:text-blue-400 flex items-center gap-1 group"
-                    style={{ color: 'var(--text-secondary)' }}
+                    className="text-sm link-accent flex items-center gap-1 group"
                   >
                     {l.label}
                     <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -164,8 +163,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-5">
             {['Privacy Policy', 'Terms of Service'].map(item => (
-              <button key={item} className="text-xs transition-colors hover:text-blue-400"
-                style={{ color: 'var(--text-muted)' }}>
+              <button key={item} className="text-xs link-muted">
                 {item}
               </button>
             ))}

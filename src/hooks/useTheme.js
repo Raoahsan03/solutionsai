@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 
 export function useTheme() {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('avaira-theme') || 'dark'
+    return localStorage.getItem('avaira-theme') || 'light'
   })
 
   useEffect(() => {

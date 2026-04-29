@@ -127,11 +127,11 @@ function CodeBox() {
           // Syntax highlight tokens
           const highlighted = line
             .replace(/(#.*$)/g, '<span style="color:#6B7280">$1</span>')
-            .replace(/\b(from|import|return|print|def|class|if|else|for|in|True|False|None)\b/g, '<span style="color:#8B5CF6;font-weight:600">$1</span>')
-            .replace(/"([^"]*)"/g, '<span style="color:#22D3EE">"$1"</span>')
-            .replace(/'([^']*)'/g, '<span style="color:#22D3EE">\'$1\'</span>')
-            .replace(/\b(\d+)\b/g, '<span style="color:#F59E0B">$1</span>')
-            .replace(/\b(Pipeline|LLMChain|Retriever|Agent|FineTuner|ConversationMemory)\b/g, '<span style="color:#3B82F6">$1</span>')
+            .replace(/\b(from|import|return|print|def|class|if|else|for|in|True|False|None)\b/g, '<span style="color:#0f4c81;font-weight:600">$1</span>')
+            .replace(/"([^"]*)"/g, '<span style="color:#1386a6">"$1"</span>')
+            .replace(/'([^']*)'/g, '<span style="color:#1386a6">\'$1\'</span>')
+            .replace(/\b(\d+)\b/g, '<span style="color:#c97a2e">$1</span>')
+            .replace(/\b(Pipeline|LLMChain|Retriever|Agent|FineTuner|ConversationMemory)\b/g, '<span style="color:#1aa3b5">$1</span>')
 
           return (
             <div key={i} className="flex">
@@ -141,7 +141,7 @@ function CodeBox() {
               <span dangerouslySetInnerHTML={{ __html: highlighted || '&nbsp;' }}
                 style={{ color: 'var(--text-primary)', flex: 1 }} />
               {i === lines.length - 1 && (
-                <span className="cursor-blink" style={{ color: '#3B82F6', fontWeight: 'bold' }}>|</span>
+                <span className="cursor-blink" style={{ color: 'var(--accent-primary)', fontWeight: 'bold' }}>|</span>
               )}
             </div>
           )
@@ -182,7 +182,7 @@ export default function WhyUs() {
     <section id="why-us" className="relative py-32 overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
       {/* Bg glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-8 blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #3B82F6, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(circle, rgba(15, 76, 129, 0.2), transparent 70%)' }} />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -202,8 +202,7 @@ export default function WhyUs() {
               variants={fadeUp(0)}
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
-              style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', color: '#60A5FA' }}
+              className="section-eyebrow mb-6"
             >
               Why Avaira
             </motion.div>
@@ -240,7 +239,7 @@ export default function WhyUs() {
                 >
                   <div
                     className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-lg"
-                    style={{ background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.2)' }}
+                    style={{ background: 'var(--accent-soft)', border: '1px solid rgba(15, 76, 129, 0.2)' }}
                   >
                     {pt.icon}
                   </div>

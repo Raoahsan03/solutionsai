@@ -35,7 +35,7 @@ export default function FAQ() {
   return (
     <section id="faq" className="relative py-28 overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
       <div className="absolute top-1/2 right-0 w-[420px] h-[420px] rounded-full opacity-10 blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #3B82F6, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(circle, rgba(15, 76, 129, 0.2), transparent 70%)' }} />
 
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-12">
@@ -44,8 +44,7 @@ export default function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
-            style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', color: '#60A5FA' }}
+            className="section-eyebrow mb-6"
           >
             FAQ
           </motion.div>

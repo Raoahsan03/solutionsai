@@ -5,7 +5,7 @@ export default function Schedule() {
   return (
     <section className="relative min-h-screen pt-28 pb-24 overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full opacity-10 blur-[150px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, #3B82F6 0%, #8B5CF6 50%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse, rgba(15, 76, 129, 0.22) 0%, rgba(19, 134, 166, 0.18) 50%, transparent 70%)' }} />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
@@ -13,8 +13,7 @@ export default function Schedule() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
-            style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', color: '#60A5FA' }}
+            className="section-eyebrow mb-6"
           >
             Schedule
           </motion.div>
@@ -49,8 +48,8 @@ export default function Schedule() {
             <div className="glass-card p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)' }}>
-                  <Calendar size={18} style={{ color: '#60A5FA' }} />
+                  style={{ background: 'var(--accent-soft)', border: '1px solid rgba(15, 76, 129, 0.2)' }}>
+                  <Calendar size={18} style={{ color: 'var(--accent-primary)' }} />
                 </div>
                 <div>
                   <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>30-minute call</p>
@@ -65,8 +64,8 @@ export default function Schedule() {
             <div className="glass-card p-6">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ background: 'rgba(34,211,238,0.1)', border: '1px solid rgba(34,211,238,0.2)' }}>
-                  <Globe size={18} style={{ color: '#22D3EE' }} />
+                  style={{ background: 'var(--accent-soft)', border: '1px solid rgba(15, 76, 129, 0.2)' }}>
+                  <Globe size={18} style={{ color: 'var(--accent-secondary)' }} />
                 </div>
                 <div>
                   <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Your timezone</p>
@@ -76,7 +75,7 @@ export default function Schedule() {
               <p className="text-xs" style={{ color: 'var(--text-muted)' }}>The schedule updates automatically based on your local time.</p>
             </div>
 
-            <div className="p-5 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.08))', border: '1px solid rgba(59,130,246,0.15)' }}>
+            <div className="p-5 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(15, 76, 129, 0.08), rgba(19, 134, 166, 0.08))', border: '1px solid rgba(15, 76, 129, 0.15)' }}>
               <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                 Prefer email? Reach us at{' '}
                 <a href="mailto:hello@avaira.com" className="gradient-text font-semibold hover:underline">

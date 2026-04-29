@@ -20,7 +20,7 @@ function AnimatedWaves() {
         className="blob-drift absolute rounded-full opacity-20 blur-[120px]"
         style={{
           width: 600, height: 600,
-          background: 'radial-gradient(circle, #3B82F6 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(15, 76, 129, 0.2) 0%, transparent 70%)',
           top: '-10%', left: '-5%',
         }}
       />
@@ -28,7 +28,7 @@ function AnimatedWaves() {
         className="blob-drift-slow absolute rounded-full opacity-15 blur-[100px]"
         style={{
           width: 500, height: 500,
-          background: 'radial-gradient(circle, #8B5CF6 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(19, 134, 166, 0.18) 0%, transparent 70%)',
           top: '20%', right: '-10%',
         }}
       />
@@ -36,7 +36,7 @@ function AnimatedWaves() {
         className="blob-drift absolute rounded-full opacity-15 blur-[130px]"
         style={{
           width: 400, height: 400,
-          background: 'radial-gradient(circle, #22D3EE 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(26, 163, 181, 0.18) 0%, transparent 70%)',
           bottom: '5%', left: '30%',
           animationDelay: '-4s',
         }}
@@ -51,16 +51,16 @@ function AnimatedWaves() {
       >
         <defs>
           <linearGradient id="wave-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#3B82F6" stopOpacity="0" />
-            <stop offset="30%" stopColor="#3B82F6" stopOpacity="0.8" />
-            <stop offset="70%" stopColor="#8B5CF6" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#22D3EE" stopOpacity="0" />
+            <stop offset="0%" stopColor="#0f4c81" stopOpacity="0" />
+            <stop offset="30%" stopColor="#0f4c81" stopOpacity="0.6" />
+            <stop offset="70%" stopColor="#1386a6" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#1aa3b5" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="wave-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#22D3EE" stopOpacity="0" />
-            <stop offset="40%" stopColor="#22D3EE" stopOpacity="0.6" />
-            <stop offset="60%" stopColor="#8B5CF6" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+            <stop offset="0%" stopColor="#1aa3b5" stopOpacity="0" />
+            <stop offset="40%" stopColor="#1aa3b5" stopOpacity="0.5" />
+            <stop offset="60%" stopColor="#1386a6" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#0f4c81" stopOpacity="0" />
           </linearGradient>
         </defs>
         {[...Array(6)].map((_, i) => (
@@ -92,8 +92,8 @@ function AnimatedWaves() {
         className="absolute inset-0 opacity-5"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(59,130,246,0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(59,130,246,0.3) 1px, transparent 1px)
+            linear-gradient(rgba(15, 76, 129, 0.18) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(15, 76, 129, 0.18) 1px, transparent 1px)
           `,
           backgroundSize: '60px 60px',
         }}
@@ -134,12 +134,12 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-sm font-medium"
           style={{
-            background: 'rgba(59,130,246,0.1)',
-            border: '1px solid rgba(59,130,246,0.25)',
-            color: '#93C5FD',
+            background: 'var(--accent-soft)',
+            border: '1px solid rgba(15, 76, 129, 0.2)',
+            color: 'var(--accent-primary)',
           }}
         >
-          <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full" style={{ background: 'var(--accent-secondary)' }} />
           AI, Web, Apps & Automation Solutions
         </motion.div>
 
@@ -188,6 +188,15 @@ export default function Hero() {
           Avaira builds websites, apps, AI automations, plugins, Shopify stores, PRDs, agents, and ERP systems that help
           businesses launch, scale, and work smarter.
         </motion.p>
+
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          <a href="#solutions" className="btn-primary">
+            Explore Solutions
+          </a>
+          <a href="#/schedule" className="btn-ghost">
+            Schedule a Call
+          </a>
+        </div>
       </div>
     </section>
   )

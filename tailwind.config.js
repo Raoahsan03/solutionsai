@@ -6,24 +6,24 @@ export default {
     extend: {
       colors: {
         bg: {
-          primary: '#0B0F19',
-          secondary: '#0F172A',
-          tertiary: '#111827',
+          primary: '#ffffff',
+          secondary: '#f8f9fa',
+          tertiary: '#eef2f5',
         },
         accent: {
-          blue: '#3B82F6',
-          purple: '#8B5CF6',
-          cyan: '#22D3EE',
+          primary: '#0f4c81',
+          secondary: '#1386a6',
+          soft: '#e6f1f7',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'Manrope', 'system-ui', 'sans-serif'],
-        display: ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Open Sans', 'Lato', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'Montserrat', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
-        'gradient-brand': 'linear-gradient(135deg, #3B82F6, #8B5CF6, #22D3EE)',
-        'gradient-brand-r': 'linear-gradient(135deg, #22D3EE, #8B5CF6, #3B82F6)',
-        'gradient-card': 'linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.08))',
+        'gradient-brand': 'linear-gradient(135deg, #0f4c81, #1386a6)',
+        'gradient-brand-r': 'linear-gradient(135deg, #1386a6, #0f4c81)',
+        'gradient-card': 'linear-gradient(135deg, rgba(15,76,129,0.08), rgba(19,134,166,0.08))',
       },
       animation: {
         'spin-slow': 'spin 12s linear infinite',
@@ -47,10 +47,10 @@ export default {
         },
       },
       boxShadow: {
-        'glow-blue': '0 0 30px rgba(59,130,246,0.4)',
-        'glow-purple': '0 0 30px rgba(139,92,246,0.4)',
-        'glow-cyan': '0 0 30px rgba(34,211,238,0.4)',
-        'glow-sm-blue': '0 0 12px rgba(59,130,246,0.3)',
+        'glow-blue': '0 0 30px rgba(15,76,129,0.25)',
+        'glow-purple': '0 0 30px rgba(19,134,166,0.25)',
+        'glow-cyan': '0 0 30px rgba(19,134,166,0.25)',
+        'glow-sm-blue': '0 0 12px rgba(15,76,129,0.2)',
       },
     },
   },

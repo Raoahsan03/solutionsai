@@ -1,6 +1,7 @@
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import { useTheme } from './hooks/useTheme'
+import { useReveal } from './hooks/useReveal'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -10,6 +11,8 @@ import GetQuoteModal from './components/GetQuoteModal'
 export default function App() {
   const { theme, toggleTheme } = useTheme()
   const [quoteOpen, setQuoteOpen] = useState(false)
+
+  useReveal()
 
   return (
     <HashRouter>

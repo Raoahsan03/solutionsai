@@ -7,35 +7,35 @@ const STEPS = [
     title: 'Discover',
     desc: 'We go deep into your business — workflows, pain points, data, and goals. We ask hard questions until we fully understand the problem space.',
     tags: ['Stakeholder interviews', 'Technical audit', 'Problem mapping'],
-    color: '#3B82F6',
+    color: '#0f4c81',
   },
   {
     number: '02',
     title: 'Design',
     desc: 'Architecture, data flows, and system design are mapped before a single line of code is written. We create a blueprint you can see and approve.',
     tags: ['System architecture', 'Data modeling', 'PRD creation'],
-    color: '#6366F1',
+    color: '#13608f',
   },
   {
     number: '03',
     title: 'Build',
     desc: 'Our engineers execute with precision. Clean code, modular design, and daily progress updates keep you in the loop at every stage.',
     tags: ['Agile sprints', 'Code reviews', 'Daily standups'],
-    color: '#8B5CF6',
+    color: '#13759c',
   },
   {
     number: '04',
     title: 'Test',
     desc: 'Every system is stress-tested before launch. We validate accuracy, performance, security, and edge cases — no shortcuts.',
     tags: ['QA & load testing', 'AI evaluation', 'Security review'],
-    color: '#A855F7',
+    color: '#1386a6',
   },
   {
     number: '05',
     title: 'Scale',
     desc: 'We monitor, optimize, and help you grow. The system is built to handle 10x from day one, with full observability baked in.',
     tags: ['Performance tuning', 'Monitoring & alerts', 'Growth roadmap'],
-    color: '#22D3EE',
+    color: '#1aa3b5',
   },
 ]
 
@@ -130,7 +130,7 @@ export default function ProcessTimeline() {
     >
       {/* Glow blob */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-10 blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, #3B82F6, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse, rgba(15, 76, 129, 0.2), transparent 70%)' }} />
 
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
@@ -140,8 +140,7 @@ export default function ProcessTimeline() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
-            style={{ background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.2)', color: '#22D3EE' }}
+            className="section-eyebrow mb-6"
           >
             Our Process
           </motion.div>
@@ -182,8 +181,8 @@ export default function ProcessTimeline() {
               left: 'calc(50% - 0.5px)',
               width: 1,
               height: lineHeight,
-              background: 'linear-gradient(to bottom, #3B82F6, #8B5CF6, #22D3EE)',
-              boxShadow: '0 0 12px rgba(59,130,246,0.6)',
+              background: 'linear-gradient(to bottom, #0f4c81, #1386a6, #1aa3b5)',
+              boxShadow: '0 0 12px rgba(15, 76, 129, 0.35)',
             }}
           />
 

@@ -45,9 +45,9 @@ function OrbitSystem() {
   }, [])
 
   const cardStyle = {
-    background: 'rgba(15,23,42,0.85)',
-    backdropFilter: 'blur(20px)',
-    border: '1px solid rgba(59,130,246,0.3)',
+    background: 'var(--bg-primary)',
+    backdropFilter: 'blur(12px)',
+    border: '1px solid var(--border-subtle)',
     borderRadius: 12,
     padding: '8px 16px',
     fontSize: 13,
@@ -55,6 +55,7 @@ function OrbitSystem() {
     whiteSpace: 'nowrap',
     position: 'absolute',
     zIndex: 20,
+    boxShadow: 'var(--shadow-soft)',
   }
 
   return (
@@ -64,8 +65,8 @@ function OrbitSystem() {
         className="orbit-ring-1 absolute rounded-full border opacity-30"
         style={{
           width: '100%', height: '100%',
-          borderColor: 'rgba(139,92,246,0.6)',
-          boxShadow: '0 0 30px rgba(139,92,246,0.15)',
+          borderColor: 'rgba(15, 76, 129, 0.35)',
+          boxShadow: '0 0 30px rgba(15, 76, 129, 0.12)',
         }}
       />
       {/* Ring 2 — middle, blue */}
@@ -73,8 +74,8 @@ function OrbitSystem() {
         className="orbit-ring-2 absolute rounded-full border opacity-40"
         style={{
           width: '75%', height: '75%',
-          borderColor: 'rgba(59,130,246,0.7)',
-          boxShadow: '0 0 25px rgba(59,130,246,0.2)',
+          borderColor: 'rgba(15, 76, 129, 0.5)',
+          boxShadow: '0 0 25px rgba(15, 76, 129, 0.18)',
           borderStyle: 'dashed',
         }}
       />
@@ -83,16 +84,16 @@ function OrbitSystem() {
         className="orbit-ring-3 absolute rounded-full border opacity-50"
         style={{
           width: '50%', height: '50%',
-          borderColor: 'rgba(34,211,238,0.7)',
-          boxShadow: '0 0 20px rgba(34,211,238,0.25)',
+          borderColor: 'rgba(19, 134, 166, 0.6)',
+          boxShadow: '0 0 20px rgba(19, 134, 166, 0.2)',
         }}
       />
 
       {/* Orbit dots */}
       {[
-        { size: 8, orbit: '100%', angle: 45, color: '#8B5CF6' },
-        { size: 6, orbit: '75%', angle: 200, color: '#3B82F6' },
-        { size: 7, orbit: '50%', angle: 120, color: '#22D3EE' },
+        { size: 8, orbit: '100%', angle: 45, color: '#0f4c81' },
+        { size: 6, orbit: '75%', angle: 200, color: '#1386a6' },
+        { size: 7, orbit: '50%', angle: 120, color: '#1aa3b5' },
       ].map((dot, i) => (
         <div key={i} className="absolute inset-0 flex items-center justify-center"
           style={{ animation: `orbit-${i % 2 === 0 ? '1' : '2'} ${12 + i * 6}s linear infinite` }}>
@@ -114,9 +115,9 @@ function OrbitSystem() {
         className="relative z-10 flex items-center justify-center rounded-full"
         style={{
           width: 100, height: 100,
-          background: 'linear-gradient(135deg, rgba(59,130,246,0.2), rgba(139,92,246,0.2))',
-          border: '1px solid rgba(139,92,246,0.4)',
-          boxShadow: '0 0 40px rgba(139,92,246,0.3)',
+          background: 'linear-gradient(135deg, rgba(15, 76, 129, 0.15), rgba(19, 134, 166, 0.15))',
+          border: '1px solid rgba(15, 76, 129, 0.25)',
+          boxShadow: '0 0 32px rgba(15, 76, 129, 0.2)',
         }}
       >
         <span className="font-display font-bold text-sm gradient-text">Avaira</span>
@@ -131,7 +132,7 @@ function OrbitSystem() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1], delay: i * 0.08 }}
-            style={{ ...cardStyle, ...cardData.positions[i], color: i === 0 ? '#93C5FD' : '#C4B5FD' }}
+            style={{ ...cardStyle, ...cardData.positions[i], color: i === 0 ? 'var(--accent-primary)' : 'var(--accent-secondary)' }}
           >
             <span style={{ marginRight: 6, opacity: 0.6 }}>⬡</span>
             {term}
@@ -159,7 +160,7 @@ export default function About() {
     <section id="about" className="relative py-32 overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
       {/* Bg glow */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-10 blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #8B5CF6, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(circle, rgba(15, 76, 129, 0.2), transparent 70%)' }} />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -171,8 +172,7 @@ export default function About() {
             animate={inView ? 'visible' : 'hidden'}
           >
             <motion.div variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
-              style={{ background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.2)', color: '#22D3EE' }}>
+              className="section-eyebrow mb-6">
               About Avaira
             </motion.div>
 

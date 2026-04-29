@@ -25,7 +25,7 @@ export default function Portfolio() {
   return (
     <section id="portfolio" className="relative py-32 overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
       <div className="absolute top-1/4 left-0 w-[420px] h-[420px] rounded-full opacity-10 blur-[120px] pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #8B5CF6, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(circle, rgba(15, 76, 129, 0.2), transparent 70%)' }} />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
@@ -34,8 +34,7 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-6"
-            style={{ background: 'rgba(34,211,238,0.08)', border: '1px solid rgba(34,211,238,0.2)', color: '#22D3EE' }}
+            className="section-eyebrow mb-6"
           >
             Portfolio
           </motion.div>
@@ -83,7 +82,7 @@ export default function Portfolio() {
                   <span
                     key={metric}
                     className="px-3 py-1 rounded-full text-xs font-medium"
-                    style={{ background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.25)', color: '#BFDBFE' }}
+                    style={{ background: 'var(--accent-soft)', border: '1px solid rgba(15, 76, 129, 0.2)', color: 'var(--accent-primary)' }}
                   >
                     {metric}
                   </span>
